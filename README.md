@@ -286,14 +286,22 @@ Contributions are welcome! Please feel free to submit pull requests or open issu
 If you use this code in your research, please cite:
 
 ```bibtex
-@software{llm_controller,
-  title = {LLM Controller: Adaptive Robotic Manipulator Control with LLM-Based Tuning},
-  author = {LLM Controller Team},
-  year = {2024},
-  url = {https://github.com/yourusername/LLM-Controller}
-}
+@ARTICLE{
+  authors={Rasoul Zahedifar, Mahdieh Soleymani Baghshah, Alireza Taheri},
+  journal={Robotics and Autonomous Systems},
+  publisher={North-Holland}
+  title={LLM-controller: Dynamic robot control adaptation using large language models}, 
+  year={2025},
+  volume={186},
+  pages={104913},
+  doi={https://doi.org/10.1016/j.robot.2024.104913}
+  }
 ```
 
 ## Contact
 
-For questions or support, please open an issue on GitHub.
+Rasoul Zahedifar - rasoul.zahedifar75@gmail.com
+
+GitHub Link: [https://github.com/Rasoul-Zahedifar/LLM-Controller](https://github.com/Rasoul-Zahedifar/LLM-Controller/tree/main)
+
+Journal Link: [https://www.sciencedirect.com/science/article/LLM-controller: Dynamic robot control adaptation using large language models](https://www.sciencedirect.com/science/article/abs/pii/S0921889024002975)
