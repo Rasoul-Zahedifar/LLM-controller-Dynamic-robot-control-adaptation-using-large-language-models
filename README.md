@@ -39,7 +39,7 @@ LLM-Controller/
 ### 1. Clone the repository
 
 ```bash
-git clone <https://github.com/Rasoul-Zahedifar/LLM-Controller>
+git clone https://github.com/Rasoul-Zahedifar/LLM-Controller
 cd LLM-Controller
 ```
 
@@ -274,25 +274,8 @@ The runner tracks various performance metrics:
 - SymPy
 - Matplotlib
 - LangChain
-- OpenAI API (optional, for LLM tuning)
-- FFmpeg (optional, for animation export)
-
-## Troubleshooting
-
-### Animation Export Issues
-
-If you encounter issues exporting animations, ensure FFmpeg is installed:
-
-```bash
-# Ubuntu/Debian
-sudo apt-get install ffmpeg
-
-# macOS
-brew install ffmpeg
-
-# Windows
-# Download from https://ffmpeg.org/download.html
-```
+- OpenAI API
+- FFmpeg
 
 ## Contributing
 
