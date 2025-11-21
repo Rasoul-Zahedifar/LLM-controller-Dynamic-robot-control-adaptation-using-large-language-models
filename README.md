@@ -335,6 +335,6 @@ If you use this code in your research, please cite:
 
 Rasoul Zahedifar - rasoul.zahedifar75@gmail.com
 
-GitHub Link: [https://github.com/Rasoul-Zahedifar/LLM-Controller](https://github.com/Rasoul-Zahedifar/LLM-Controller/tree/main)
+GitHub Link: [https://github.com/Rasoul-Zahedifar/LLM-Controller](https://github.com/Rasoul-Zahedifar/LLM-controller-Dynamic-robot-control-adaptation-using-large-language-models/tree/main)
 
 Journal Link: [https://www.sciencedirect.com/science/article/LLM-controller: Dynamic robot control adaptation using large language models](https://www.sciencedirect.com/science/article/abs/pii/S0921889024002975)
