@@ -54,12 +54,19 @@ def create_animation(results, l1, l2, output_path='animation_2link.mp4', fps=30)
     point_joint1, = ax1.plot([], [], 'ko', markersize=8)
     point_joint2, = ax1.plot([], [], 'ko', markersize=8)
     point_ee, = ax1.plot([], [], 'go', markersize=10, label='End Effector')
-    traj_desired, = ax1.plot([], [], 'b--', alpha=0.5, label='Desired')
-    traj_actual, = ax1.plot([], [], 'r-', alpha=0.5, label='Actual')
+    
+    # Draw the complete desired trajectory as a hollow circle/path
+    desired_circle, = ax1.plot(end_effectors2_d[:, 0], end_effectors2_d[:, 1], 
+                               'b-', alpha=0.3, linewidth=2, label='Desired Path')
+    
+    # Add a moving target point on the desired trajectory
+    point_target, = ax1.plot([], [], 'b*', markersize=15, label='Target', alpha=0.7)
+    
+    traj_actual, = ax1.plot([], [], 'r-', alpha=0.5, linewidth=1.5, label='Actual Path')
     
     error_line, = ax2.plot([], [], 'r-')
     
-    ax1.legend()
+    ax1.legend(loc='upper right')
     
     def init():
         line_link1.set_data([], [])
@@ -67,11 +74,11 @@ def create_animation(results, l1, l2, output_path='animation_2link.mp4', fps=30)
         point_joint1.set_data([], [])
         point_joint2.set_data([], [])
         point_ee.set_data([], [])
-        traj_desired.set_data([], [])
+        point_target.set_data([], [])
         traj_actual.set_data([], [])
         error_line.set_data([], [])
         return (line_link1, line_link2, point_joint1, point_joint2, 
-                point_ee, traj_desired, traj_actual, error_line)
+                point_ee, point_target, traj_actual, error_line)
     
     def animate(frame):
         # Compute joint positions
@@ -89,8 +96,10 @@ def create_animation(results, l1, l2, output_path='animation_2link.mp4', fps=30)
         point_joint2.set_data([x2], [y2])
         point_ee.set_data([x2], [y2])
         
-        # Update trajectories
-        traj_desired.set_data(end_effectors2_d[:frame+1, 0], end_effectors2_d[:frame+1, 1])
+        # Update target position on desired trajectory
+        point_target.set_data([end_effectors2_d[frame, 0]], [end_effectors2_d[frame, 1]])
+        
+        # Update actual trajectory trail
         traj_actual.set_data(end_effectors2[:frame+1, 0], end_effectors2[:frame+1, 1])
         
         # Update error plot
@@ -98,7 +107,7 @@ def create_animation(results, l1, l2, output_path='animation_2link.mp4', fps=30)
         error_line.set_data(range(frame+1), errors)
         
         return (line_link1, line_link2, point_joint1, point_joint2, 
-                point_ee, traj_desired, traj_actual, error_line)
+                point_ee, point_target, traj_actual, error_line)
     
     anim = FuncAnimation(fig, animate, init_func=init, frames=len(theta1_traj),
                         interval=1000/fps, blit=True, repeat=True)
@@ -164,12 +173,19 @@ def create_animation_3link(results, l1, l2, l3, output_path='animation_3link.mp4
     point_joint2, = ax1.plot([], [], 'ko', markersize=8)
     point_joint3, = ax1.plot([], [], 'ko', markersize=8)
     point_ee, = ax1.plot([], [], 'mo', markersize=10, label='End Effector')
-    traj_desired, = ax1.plot([], [], 'b--', alpha=0.5, label='Desired')
-    traj_actual, = ax1.plot([], [], 'r-', alpha=0.5, label='Actual')
+    
+    # Draw the complete desired trajectory as a hollow circle/path
+    desired_circle, = ax1.plot(end_effectors3_d[:, 0], end_effectors3_d[:, 1], 
+                               'b-', alpha=0.3, linewidth=2, label='Desired Path')
+    
+    # Add a moving target point on the desired trajectory
+    point_target, = ax1.plot([], [], 'b*', markersize=15, label='Target', alpha=0.7)
+    
+    traj_actual, = ax1.plot([], [], 'r-', alpha=0.5, linewidth=1.5, label='Actual Path')
     
     error_line, = ax2.plot([], [], 'r-')
     
-    ax1.legend()
+    ax1.legend(loc='upper right')
     
     def init():
         line_link1.set_data([], [])
@@ -179,11 +195,11 @@ def create_animation_3link(results, l1, l2, l3, output_path='animation_3link.mp4
         point_joint2.set_data([], [])
         point_joint3.set_data([], [])
         point_ee.set_data([], [])
-        traj_desired.set_data([], [])
+        point_target.set_data([], [])
         traj_actual.set_data([], [])
         error_line.set_data([], [])
         return (line_link1, line_link2, line_link3, point_joint1, point_joint2, 
-                point_joint3, point_ee, traj_desired, traj_actual, error_line)
+                point_joint3, point_ee, point_target, traj_actual, error_line)
     
     def animate(frame):
         # Compute joint positions
@@ -205,8 +221,10 @@ def create_animation_3link(results, l1, l2, l3, output_path='animation_3link.mp4
         point_joint3.set_data([x3], [y3])
         point_ee.set_data([x3], [y3])
         
-        # Update trajectories
-        traj_desired.set_data(end_effectors3_d[:frame+1, 0], end_effectors3_d[:frame+1, 1])
+        # Update target position on desired trajectory
+        point_target.set_data([end_effectors3_d[frame, 0]], [end_effectors3_d[frame, 1]])
+        
+        # Update actual trajectory trail
         traj_actual.set_data(end_effectors3[:frame+1, 0], end_effectors3[:frame+1, 1])
         
         # Update error plot
@@ -214,7 +232,7 @@ def create_animation_3link(results, l1, l2, l3, output_path='animation_3link.mp4
         error_line.set_data(range(frame+1), errors)
         
         return (line_link1, line_link2, line_link3, point_joint1, point_joint2, 
-                point_joint3, point_ee, traj_desired, traj_actual, error_line)
+                point_joint3, point_ee, point_target, traj_actual, error_line)
     
     anim = FuncAnimation(fig, animate, init_func=init, frames=len(theta1_traj),
                         interval=1000/fps, blit=True, repeat=True)

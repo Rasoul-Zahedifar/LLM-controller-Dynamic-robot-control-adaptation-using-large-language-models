@@ -39,24 +39,54 @@ LLM-Controller/
 ### 1. Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone <https://github.com/Rasoul-Zahedifar/LLM-Controller>
 cd LLM-Controller
 ```
 
-### 2. Create a virtual environment (recommended)
+### 2. Install system dependencies
+
+**Important:** For animation support, you need ffmpeg installed on your system.
+
+**Using conda (recommended):**
+
+```bash
+conda install ffmpeg -y
+```
+
+**Using system package manager:**
+
+```bash
+# Ubuntu/Debian
+sudo apt install ffmpeg
+
+# macOS
+brew install ffmpeg
+
+# Windows
+# Download from https://ffmpeg.org/download.html
+```
+
+### 3. Create a virtual environment (recommended)
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-### 3. Install dependencies
+**Or using conda:**
+
+```bash
+conda create -n llm-controller python=3.11
+conda activate llm-controller
+```
+
+### 4. Install Python dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Install the package
+### 5. Install the package
 
 ```bash
 pip install -e .
@@ -135,13 +165,26 @@ params.set_reference_signal([0.5 * sp.cos(t), 0.5 * sp.sin(t)])
 
 ### LLM Configuration
 
-To use LLM-based tuning, set your OpenAI API key:
+To use LLM-based tuning, you need to set your OpenAI API key. There are three ways to do this:
+
+#### Option 1: Using a `.env` file (Recommended)
+
+Create a `.env` file in the project root directory:
+
+```bash
+# .env
+OPENAI_API_KEY=your-api-key-here
+```
+
+The package will automatically load this file when you import the LLM configuration module.
+
+#### Option 2: Using an environment variable
 
 ```bash
 export OPENAI_API_KEY='your-api-key-here'
 ```
 
-Or in Python:
+#### Option 3: Passing the API key directly in Python
 
 ```python
 from llm_controller.config.llm_config import get_llm_instance, create_prompt, create_chat_history
@@ -250,32 +293,6 @@ brew install ffmpeg
 # Windows
 # Download from https://ffmpeg.org/download.html
 ```
-
-### LLM Connection Issues
-
-If LLM tuning fails:
-1. Check that your OpenAI API key is set correctly
-2. Verify internet connectivity
-3. Check API quota and billing status
-
-### Import Errors
-
-If you encounter import errors:
-1. Ensure the package is installed: `pip install -e .`
-2. Check that you're in the correct virtual environment
-3. Verify all dependencies are installed: `pip install -r requirements.txt`
-
-## Original Notebooks
-
-This modular codebase was extracted from the original Jupyter notebooks:
-- `self_tunning.ipynb` - 2-link manipulator implementation
-- `self_tunning_3link.ipynb` - 3-link manipulator implementation
-
-The notebooks remain unchanged and can still be used independently.
-
-## License
-
-See LICENSE file for details.
 
 ## Contributing
 

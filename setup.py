@@ -41,10 +41,6 @@ setup(
             "flake8>=4.0.0",
             "mypy>=0.950",
         ],
-        "viz": [
-            "cairosvg>=2.5.0",
-            "ffmpeg-python>=0.2.0",
-        ],
     },
     entry_points={
         "console_scripts": [

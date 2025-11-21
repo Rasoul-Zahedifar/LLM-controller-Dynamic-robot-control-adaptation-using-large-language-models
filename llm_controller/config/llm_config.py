@@ -6,9 +6,16 @@ and prompts for the controller tuning system.
 """
 
 import os
+from pathlib import Path
+from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain.memory import ChatMessageHistory
+from langchain_community.chat_message_histories import ChatMessageHistory
+
+# Load environment variables from .env file
+# Look for .env in the project root (parent of llm_controller package)
+env_path = Path(__file__).parent.parent.parent / '.env'
+load_dotenv(dotenv_path=env_path)
 
 
 def get_llm_instance(api_key=None, model='gpt-3.5-turbo', temperature=0.7):

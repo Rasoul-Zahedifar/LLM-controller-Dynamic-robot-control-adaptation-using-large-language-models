@@ -257,7 +257,13 @@ class Dynamics3Link:
         ])
         
         # Transform to task space
-        J_inv = np.linalg.inv(jacobian)
+        # Use pseudo-inverse to handle singular configurations
+        try:
+            J_inv = np.linalg.inv(jacobian)
+        except np.linalg.LinAlgError:
+            # If singular, use pseudo-inverse with small regularization
+            J_inv = np.linalg.pinv(jacobian, rcond=1e-6)
+        
         M_x = J_inv.T @ self.M_q @ J_inv
         C_x = J_inv.T @ (self.C_q - self.M_q @ J_inv @ jacobian_dot) @ J_inv
         G_x = J_inv.T @ self.G_q

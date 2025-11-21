@@ -3,6 +3,10 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# Directories
+examples/output_2link/
+examples/output_3link/
+
 # C extensions
 *.so
 

@@ -41,7 +41,8 @@ class SystemParams:
     def _init_2link_defaults(self):
         """Initialize default parameters for 2-link system."""
         # Initial conditions
-        self.q_init = np.array([[0.0], [0.0]])  # Initial joint angles
+        # Avoid singular configuration (theta2 = 0 causes singularity)
+        self.q_init = np.array([[np.pi/6], [np.pi/6]])  # Initial joint angles (30 degrees each)
         self.q_dot_init = np.array([[0.0], [0.0]])  # Initial joint velocities
         
         # Controller gains [k_p, k_d, k_i, landa_1, landa_2]
@@ -79,7 +80,8 @@ class SystemParams:
     def _init_3link_defaults(self):
         """Initialize default parameters for 3-link system."""
         # Initial conditions
-        self.q_init = np.array([[0.0], [0.0], [0.0]])  # Initial joint angles
+        # Avoid singular configuration
+        self.q_init = np.array([[np.pi/6], [np.pi/6], [np.pi/6]])  # Initial joint angles (30 degrees each)
         self.q_dot_init = np.array([[0.0], [0.0], [0.0]])  # Initial joint velocities
         
         # Controller gains [k_p, k_d, k_i, landa_1, landa_2]
