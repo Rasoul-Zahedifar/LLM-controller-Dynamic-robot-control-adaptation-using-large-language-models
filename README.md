@@ -18,7 +18,7 @@ This package provides a complete framework for simulating and controlling 2-link
 ## Project Structure
 
 ```
-LLM-Controller/
+LLM-controller/
 ├── llm_controller/          # Main package
 │   ├── core/               # Core modules (reference signals, LLM chain)
 │   ├── dynamics/           # Dynamics models (2-link, 3-link)
@@ -42,8 +42,8 @@ LLM-Controller/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Rasoul-Zahedifar/LLM-Controller
-cd LLM-Controller
+git clone https://github.com/Rasoul-Zahedifar/LLM-controller-Dynamic-robot-control-adaptation-using-large-language-models LLM-controller
+cd LLM-controller
 ```
 
 ### 2. Install system dependencies
@@ -335,6 +335,6 @@ If you use this code in your research, please cite:
 
 Rasoul Zahedifar - rasoul.zahedifar75@gmail.com
 
-GitHub Link: [https://github.com/Rasoul-Zahedifar/LLM-Controller](https://github.com/Rasoul-Zahedifar/LLM-controller-Dynamic-robot-control-adaptation-using-large-language-models/tree/main)
+GitHub Link: [https://github.com/Rasoul-Zahedifar/LLM-controller](https://github.com/Rasoul-Zahedifar/LLM-controller-Dynamic-robot-control-adaptation-using-large-language-models/tree/main)
 
 Journal Link: [https://www.sciencedirect.com/science/article/LLM-controller: Dynamic robot control adaptation using large language models](https://www.sciencedirect.com/science/article/abs/pii/S0921889024002975)
