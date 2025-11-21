@@ -6,6 +6,8 @@ __pycache__/
 # Directories
 examples/output_2link/
 examples/output_3link/
+examples/output_2link_tuning/
+examples/output_3link_tuning/
 
 # C extensions
 *.so

@@ -28,9 +28,12 @@ LLM-Controller/
 │   ├── config/             # Configuration utilities
 │   └── utils/              # Utility functions
 ├── examples/               # Example scripts
-│   ├── run_2link_simulation.py
-│   └── run_3link_simulation.py
+│   ├── run_2link_simulation.py       # Basic 2-link simulation
+│   ├── run_2link_with_tuning.py      # 2-link with LLM tuning
+│   ├── run_3link_simulation.py       # Basic 3-link simulation
+│   └── run_3link_with_tuning.py      # 3-link with LLM tuning
 ├── requirements.txt        # Python dependencies
+├── .env                   # Environment variables (create this, see Installation)
 └── README.md              # This file
 ```
 
@@ -94,17 +97,47 @@ pip install -e .
 
 ## Quick Start
 
-### Running a 2-Link Simulation
+### Running a Basic 2-Link Simulation (No Tuning)
 
 ```bash
 python examples/run_2link_simulation.py
 ```
 
-### Running a 3-Link Simulation
+This runs a simulation with default controller gains (no LLM tuning).
+
+### Running LLM-Based Controller Tuning (2-Link)
+
+```bash
+python examples/run_2link_with_tuning.py
+```
+
+This demonstrates the LLM iteratively improving controller gains based on performance metrics. The LLM will:
+- Evaluate current performance
+- Suggest improved gains
+- Continue tuning until satisfied or max attempts reached
+
+**Configuration**: Edit the constants at the top of the script:
+- `MAX_TUNING_ATTEMPTS`: Maximum tuning iterations (default: 5)
+- `SIM_TRIALS_PER_ATTEMPT`: Simulations per iteration (default: 2)
+- `INITIAL_GAINS`: Override default gains (optional)
+
+### Running a Basic 3-Link Simulation (No Tuning)
 
 ```bash
 python examples/run_3link_simulation.py
 ```
+
+This runs a 3-link simulation with default controller gains (no LLM tuning).
+
+### Running LLM-Based Controller Tuning (3-Link)
+
+```bash
+python examples/run_3link_with_tuning.py
+```
+
+Similar to the 2-link tuning, but for the more complex 3-link manipulator system. The LLM adapts to the increased complexity and suggests appropriate gains for the additional degree of freedom.
+
+**Configuration**: Same as 2-link tuning - edit constants at the top of the script.
 
 ### Basic Usage in Python
 

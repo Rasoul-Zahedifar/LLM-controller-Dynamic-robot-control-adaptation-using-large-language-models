@@ -44,8 +44,7 @@ class LLMChain:
             chain,
             lambda session_id: chat_history_for_chain,
             input_messages_key="input",
-            history_messages_key="history",
-            output_messages_key="answer"
+            history_messages_key="history"
         )
         
         # Regex patterns for parsing LLM responses
